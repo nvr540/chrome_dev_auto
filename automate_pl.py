@@ -18,9 +18,9 @@ async def capture_network_events(route):
         # print(request)
         # print(type(request.post_data()))
         try:
-            post_data = await request.sizes() if method == 'POST' else None
+            post_data = request.post_data if method == 'POST' else None
         except Exception as e:
-            post_data = "You are fucked up. It's using javascript for post request"
+            post_data = f"You are fucked up. It's using javascript for post request: {e}"
             print(e) 
         # body = post_data.decode('utf-8') if post_data else ''
         network_requests[method].append({
